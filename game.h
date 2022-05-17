@@ -1,12 +1,16 @@
 #pragma once
-#include<iostream>
+#include<vector>
+#include<string>
+
+struct map;
+struct enemy;
 
 struct hero
 {
 	hero();
 	hero(int x, int y);
-	void move_x(int side);
-	void move_y(int side);
+	void move_x(int side, map& m);
+	void move_y(int side, map& m);
 	void drow_hero();
 private:
 	int x;
@@ -17,11 +21,19 @@ private:
 
 struct map
 {
+	friend struct hero;
 	map();
 	void drow_map();
+	void load_map(std::string fname);
 private:
-	int h = 10;
-	int w = 10;
+	std::vector<char*> lab;
+	int h;
+	int w;
 };
 
-bool get_comm(hero& h); 
+struct enemy
+{
+
+};
+
+bool get_comm(hero& h, map& m); 

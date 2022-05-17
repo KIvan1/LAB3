@@ -9,8 +9,10 @@ using namespace std;
 int main()
 {
 	bool k = true;
-	hero h(3, 3);
+	hero h(1, 1);
 	map m;
+
+	m.load_map("map");
 
 	if (!(initscr()))
 	{
@@ -22,7 +24,7 @@ int main()
 	{
 		h.drow_hero();
 		refresh();
-		k = get_comm(h);
+		k = get_comm(h, m);
 	}
 
 	endwin();

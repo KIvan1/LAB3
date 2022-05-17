@@ -15,18 +15,20 @@ hero::hero(int x, int y)
 	this->prev_y = y;
 }
 
-void hero::move_x(int side)
+void hero::move_x(int side, map& m)
 {
 	this->prev_x = this->x;
 	this->prev_y = this->y;
-	this->x += side;
+	if (m.lab[this->y][this->x + side] != '#')
+		this->x += side;
 }
 
-void hero::move_y(int side)
+void hero::move_y(int side, map& m)
 {
 	this->prev_x = this->x;
 	this->prev_y = this->y;
-	this->y += side;
+	if (m.lab[this->y + side][this->x] != '#') 
+		this->y += side;
 }
 
 void hero::drow_hero()
