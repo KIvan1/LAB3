@@ -1,5 +1,6 @@
 #include<iostream>
 #include<ncurses.h>
+#include<unistd.h>
 #include"game.h"
 
 
@@ -7,20 +8,22 @@ using namespace std;
 
 int main()
 {
-	hero f(12,3);
+	bool k = true;
+	hero h(3, 3);
+	map m;
+
 	if (!(initscr()))
 	{
 		fprintf(stderr, "Error");
 		exit(1);
 	}
-	printw("Hello world!\n");
-    getch();
-    mvinsch(15,10,'#');
-    refresh();
-    getch();
-    mvinsch(15,10,'&');
-    refresh();
-    getch();
+	m.drow_map();
+	while (k)
+	{
+		h.drow_hero();
+		refresh();
+		k = get_comm(h);
+	}
 
 	endwin();
 
