@@ -7,12 +7,20 @@ hero::hero()
 
 }
 
-hero::hero(int x, int y)
+hero::hero(int x, int y, map& m)
 {
-	this->x = x;
-	this->y = y;
-	this->prev_x = x;
-	this->prev_y = y;
+	if (m.lab[y][x] != '#')
+	{
+		this->x = x;
+		this->y = y;
+		this->prev_x = x;
+		this->prev_y = y;
+	}
+	else
+	{
+		fprintf(stderr, "obj can't be create\n");
+		exit(1);
+	}
 }
 
 void hero::move_x(int side, map& m)
