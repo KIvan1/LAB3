@@ -92,5 +92,8 @@ bool map::clear()
 
 void map::get_map(std::vector<std::string>& lab)
 {
-
+    for (int i = 0; i < this->h; i++)
+    {
+        lab.push_back(this->lab[i]);
+    }
 }

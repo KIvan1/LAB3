@@ -15,9 +15,11 @@ TEST(load_map, suite1)
     m.get_map(lab);
     std::ifstream f("maps/map.txt");
     std::string cur_line;
+    int i = 0;
     while(getline(f, cur_line))
     {
-
+        ASSERT_EQ(lab[i], cur_line);
+        i++;
     }
     f.close();
 }
