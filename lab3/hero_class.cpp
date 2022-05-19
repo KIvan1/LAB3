@@ -44,6 +44,11 @@ bool hero::init(int x, int y, const map& m)
 
 void hero::move_x(int side, const map& m)
 {
+    if (abs(side) != 1)
+    {
+        fprintf(stderr, "can't move hero obj\n");
+        return;
+    }
 	this->prev_x = this->x;
 	this->prev_y = this->y;
     if (m.lab[this->y][this->x + side * 2] != '#')
@@ -52,6 +57,11 @@ void hero::move_x(int side, const map& m)
 
 void hero::move_y(int side, const map& m)
 {
+    if (abs(side) != 1)
+    {
+        fprintf(stderr, "can't move hero obj\n");
+        return;
+    }
 	this->prev_x = this->x;
 	this->prev_y = this->y;
 	if (m.lab[this->y + side][this->x] != '#') 

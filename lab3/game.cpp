@@ -40,11 +40,11 @@ int main()
     }
     e.push_back(cur_e1);
 
-	if (!(initscr()))
-	{
-		fprintf(stderr, "Error");
-		exit(1);
-	}
+    if (!(initscr()))
+    {
+        fprintf(stderr, "Error");
+        exit(1);
+    }
 
 	m.drow_map();
 	for (int i = 0; i < e.size(); i ++)
@@ -69,7 +69,7 @@ int main()
         }
 		refresh();
 	}
-	endwin();
+    endwin();
 
     m.clear();
 
