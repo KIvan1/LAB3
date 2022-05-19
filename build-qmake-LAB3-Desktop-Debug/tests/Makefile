@@ -40,7 +40,7 @@ DISTNAME      = tests1.0.0
 DISTDIR = /home/ivan/POtesting/LAB3/build-qmake-LAB3-Desktop-Debug/tests/.tmp/tests1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -lgcov -lpthread   
+LIBS          = $(SUBLIBS) -lgcov -lncurses -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -54,10 +54,20 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../external/googletest/googletest/src/gtest-all.cc \
 		../../external/googletest/googlemock/src/gmock-all.cc \
-		../../tests/main.cpp 
+		../../tests/main.cpp \
+		../../lab3/get_param.cpp \
+		../../lab3/enemy_class.cpp \
+		../../lab3/hero_class.cpp \
+		../../lab3/map_class.cpp \
+		../../lab3/get_command.cpp 
 OBJECTS       = gtest-all.o \
 		gmock-all.o \
-		main.o
+		main.o \
+		get_param.o \
+		enemy_class.o \
+		hero_class.o \
+		map_class.o \
+		get_command.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -284,7 +294,12 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../../../tests/tests.pro tests.h \
 		../lab3/game.h ../../external/googletest/googletest/src/gtest-all.cc \
 		../../external/googletest/googlemock/src/gmock-all.cc \
-		../../tests/main.cpp
+		../../tests/main.cpp \
+		../../lab3/get_param.cpp \
+		../../lab3/enemy_class.cpp \
+		../../lab3/hero_class.cpp \
+		../../lab3/map_class.cpp \
+		../../lab3/get_command.cpp
 QMAKE_TARGET  = tests
 DESTDIR       = 
 TARGET        = tests
@@ -895,8 +910,24 @@ main.o: ../../tests/main.cpp ../../tests/tests.h \
 		../../external/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h \
 		../../external/googletest/googlemock/include/gmock/internal/gmock-port.h \
 		../../external/googletest/googlemock/include/gmock/internal/custom/gmock-port.h \
-		../../external/googletest/googlemock/include/gmock/internal/custom/gmock-matchers.h
+		../../external/googletest/googlemock/include/gmock/internal/custom/gmock-matchers.h \
+		../../lab3/game.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../tests/main.cpp
+
+get_param.o: ../../lab3/get_param.cpp ../../lab3/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_param.o ../../lab3/get_param.cpp
+
+enemy_class.o: ../../lab3/enemy_class.cpp ../../lab3/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o enemy_class.o ../../lab3/enemy_class.cpp
+
+hero_class.o: ../../lab3/hero_class.cpp ../../lab3/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hero_class.o ../../lab3/hero_class.cpp
+
+map_class.o: ../../lab3/map_class.cpp ../../lab3/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o map_class.o ../../lab3/map_class.cpp
+
+get_command.o: ../../lab3/get_command.cpp ../../lab3/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_command.o ../../lab3/get_command.cpp
 
 ####### Install
 

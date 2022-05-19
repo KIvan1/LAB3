@@ -8,31 +8,50 @@ enemy::enemy()
 
 }
 
-enemy::enemy(int x, int y, map& m)
+bool enemy::init(int x, int y, const map& m)
 {
+    if (x <= 0 || y <= 0)
+    {
+        fprintf(stderr, "hero obj can't be init\n");
+        return 1;
+    }
+
+    if (x % 2 != 0)
+    {
+        fprintf(stderr, "hero obj can't be init\n");
+        return 1;
+    }
+
+    if (x >= m.w || y >= m.h)
+    {
+        fprintf(stderr, "hero obj can't be init\n");
+        return 1;
+    }
+
 	if (m.lab[y][x] != '#')
 	{
 		this->x = x;
 		this->y = y;
 		this->prev_x = x;
 		this->prev_y = y;
-		this->way_len = 6;
+        this->way_len = 10;
 		for (int i = 0; i < this->way_len; i ++)
 		{
 			this->way.push_back(0);
 		}
 		this->side = 1;
 		this->it = 0;
+        return 0;
 	}
 	else
 	{
-		fprintf(stderr, "obj can't be create\n");
-		exit(1);
+        fprintf(stderr, "enemy obj can't be init\n");
+        return 1;
 	}
 	
 }
 
-void enemy::move_enemy(map& m)
+void enemy::move_enemy(const map& m)
 {
 	std::srand(std::time(NULL));
 	this->prev_y = this->y;
@@ -43,16 +62,16 @@ void enemy::move_enemy(map& m)
 		switch (this->way[this->it])
 		{
 			case 1:
-				this->y--;
+                this->y--;
 				break;
 			case 2:
-				this->x--;
+                this->x-=2;
 				break;
 			case 3:
-				this->y++;
+                this->y++;
 				break;
 			case 4:
-				this->x++;
+                this->x+=2;
 				break;
 		}
 	} 
@@ -64,31 +83,31 @@ void enemy::move_enemy(map& m)
 			switch (cur_side)
 			{
 				case 1:
-					if (m.lab[this->y - 1][this->x] != '#')
+                    if (m.lab[this->y - 1][this->x] != '#')
 					{
 						this->way[this->it] = cur_side;
-						this->y--; 
+                        this->y--;
 					}
 					break;
 				case 2:
-					if (m.lab[this->y][this->x - 1] != '#')
+                    if (m.lab[this->y][this->x - 2] != '#')
 					{
 						this->way[this->it] = cur_side;
-						this->x--; 
+                        this->x-=2;
 					}
 					break;
 				case 3:
-					if (m.lab[this->y + 1][this->x] != '#')
+                    if (m.lab[this->y + 1][this->x] != '#')
 					{
 						this->way[this->it] = cur_side;
-						this->y++; 
+                        this->y++;
 					}
 					break;
 				case 4:
-					if (m.lab[this->y][this->x + 1] != '#')
+                    if (m.lab[this->y][this->x + 2] != '#')
 					{
 						this->way[this->it] = cur_side;
-						this->x++; 
+                        this->x+=2;
 					}
 					break;
 			}
@@ -98,7 +117,7 @@ void enemy::move_enemy(map& m)
 	}
 
 
-	if (this->it + this->side >= 0 && this->it + this->side < this->way_len)
+    if (this->it + this->side >= 0 && this->it + this->side < this->way_len)
 	{
 		this->it += this->side;
 	}
@@ -127,10 +146,15 @@ void enemy::move_enemy(map& m)
 
 }
 
-void enemy::drow_enemy()
+void enemy::drow_enemy(const hero& h)
 {
-	mvdelch(this->prev_y, this->prev_x);
-	mvinsch(this->prev_y, this->prev_x, ' ');
-	mvdelch(this->y, this->x);
-	mvinsch(this->y, this->x, '@');
+    if (this->prev_x != h.x || this->prev_y != h.y)
+    {
+        mvdelch(this->prev_y, this->prev_x);
+        mvinsch(this->prev_y, this->prev_x, ' ');
+    }
+    mvdelch(this->y, this->x);
+    mvinsch(this->y, this->x, '@');
 }
+
+

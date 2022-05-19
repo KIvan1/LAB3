@@ -14,17 +14,22 @@ void map::drow_map()
 {
 	for (int i = 0; i < this->lab.size(); i++)
 	{
-		mvinsstr(i, 0, lab[i]);
+        mvinsstr(i, 0, lab[i]);
+        if (i == this->f_y)
+        {
+            mvdelch(this->f_y, this->f_x);
+            mvinsch(this->f_y, this->f_x, 'F');
+        }
 	}
 }
 
-void map::load_map(std::string fname)
+bool map::load_map(std::string fname)
 {
 	std::ifstream f(fname);
     if (!f.is_open())
     {
         fprintf(stderr, "File not found!\n");
-        exit(1);
+        return 1;
     }
 	std::string line;
 	while (std::getline(f, line))
@@ -41,4 +46,44 @@ void map::load_map(std::string fname)
 		this->lab.push_back(cur_line);
 	}
 	this->h = this->lab.size();
+    return 0;
+}
+
+bool map::finish(int x, int y)
+{
+    if (x <= 0 || y <= 0)
+    {
+        fprintf(stderr, "finish can't be create\n");
+        return 1;
+    }
+
+    if (x % 2 != 0)
+    {
+        fprintf(stderr, "finish can't be create\n");
+        return 1;
+    }
+
+    if (x >= this->w || y >= this->h)
+    {
+        fprintf(stderr, "finish can't be create\n");
+        return 1;
+    }
+
+    if (this->lab[y][x] == '#')
+    {
+        fprintf(stderr, "finish can't be create\n");
+        return 1;
+    }
+
+    this->f_x = x;
+    this->f_y = y;
+    return 0;
+}
+
+bool map::clear()
+{
+    for (int i = 0; i < this->lab.size(); i++)
+    {
+        free(lab[i]);
+    }
 }
