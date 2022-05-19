@@ -56,14 +56,12 @@ SOURCES       = ../../lab3/game.cpp \
 		../../lab3/enemy_class.cpp \
 		../../lab3/get_command.cpp \
 		../../lab3/hero_class.cpp \
-		../../lab3/map_class.cpp \
-		../../lab3/get_param.cpp 
+		../../lab3/map_class.cpp 
 OBJECTS       = game.o \
 		enemy_class.o \
 		get_command.o \
 		hero_class.o \
-		map_class.o \
-		get_param.o
+		map_class.o
 DIST          = ../../lab3/maps/map.txt \
 		/usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -290,8 +288,7 @@ DIST          = ../../lab3/maps/map.txt \
 		../../lab3/enemy_class.cpp \
 		../../lab3/get_command.cpp \
 		../../lab3/hero_class.cpp \
-		../../lab3/map_class.cpp \
-		../../lab3/get_param.cpp
+		../../lab3/map_class.cpp
 QMAKE_TARGET  = lab3
 DESTDIR       = 
 TARGET        = lab3
@@ -804,9 +801,6 @@ hero_class.o: ../../lab3/hero_class.cpp ../../lab3/game.h
 
 map_class.o: ../../lab3/map_class.cpp ../../lab3/game.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o map_class.o ../../lab3/map_class.cpp
-
-get_param.o: ../../lab3/get_param.cpp ../../lab3/game.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_param.o ../../lab3/get_param.cpp
 
 ####### Install
 

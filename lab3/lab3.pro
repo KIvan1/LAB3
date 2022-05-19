@@ -8,14 +8,13 @@ SOURCES += game.cpp \
         get_command.cpp \
         hero_class.cpp \
         map_class.cpp \
-        get_param.cpp
 
 
 HEADERS += \
 	game.h 
 
 DISTFILES += \
-        maps\map.txt
+        maps/map.txt
 
 
 QMAKE_CFLAGS += -Wall -Wextra

@@ -4,20 +4,22 @@
 
 struct map;
 struct enemy;
-template <typename T>
-int get_param(T obj);
+struct hero;
 
 struct hero
 {
     friend struct enemy;
-    template <typename T>
-    friend int get_param(T obj);
+
 	hero();
     bool init(int x, int y, const map& m);
     void move_x(int side, const map& m);
     void move_y(int side, const map& m);
 	void drow_hero();
     bool collision(const enemy& e, const map& m);
+    int get_x();
+    int get_y();
+    int get_prev_x();
+    int get_prev_y();
 private:
 	int x;
 	int y;
@@ -29,6 +31,7 @@ struct map
 {
 	friend struct hero;
 	friend struct enemy;
+
 	map();
 	void drow_map();
     bool load_map(std::string fname);
@@ -45,6 +48,7 @@ private:
 struct enemy
 {
     friend struct hero;
+
 	enemy();
     bool init(int x, int y, const map& m);
     void move_enemy(const map& m);

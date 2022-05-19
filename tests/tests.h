@@ -3,19 +3,28 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 #include <string>
+#include <ncurses.h>
+#include <fstream>
+
 #include "game.h"
 
-TEST(hero_init_test, suite1)
+TEST(load_map, suite1)
+{
+    map m;
+    m.load_map("maps/map.txt");
+}
+
+TEST(hero_init, suite1)
 {
     map m;
     m.load_map("maps/map.txt");
     hero h;
     h.init(2, 1, m);
-    int k = get_param(h);
+    int k = h.get_x();
     ASSERT_EQ(k, 2);
 }
 
-TEST(hero_init_test, suite2)
+TEST(hero_init, suite2)
 {
     map m;
     m.load_map("maps/map.txt");
@@ -26,7 +35,7 @@ TEST(hero_init_test, suite2)
     ASSERT_EQ(s, "hero obj can't be init\n");
 }
 
-TEST(hero_init_test, suite3)
+TEST(hero_init, suite3)
 {
     map m;
     m.load_map("maps/map.txt");
@@ -37,7 +46,7 @@ TEST(hero_init_test, suite3)
     ASSERT_EQ(s, "hero obj can't be init\n");
 }
 
-TEST(hero_init_test, suite4)
+TEST(hero_init, suite4)
 {
     map m;
     m.load_map("maps/map.txt");

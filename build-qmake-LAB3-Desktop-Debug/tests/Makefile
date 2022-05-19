@@ -55,7 +55,6 @@ OBJECTS_DIR   = ./
 SOURCES       = ../../external/googletest/googletest/src/gtest-all.cc \
 		../../external/googletest/googlemock/src/gmock-all.cc \
 		../../tests/main.cpp \
-		../../lab3/get_param.cpp \
 		../../lab3/enemy_class.cpp \
 		../../lab3/hero_class.cpp \
 		../../lab3/map_class.cpp \
@@ -63,12 +62,12 @@ SOURCES       = ../../external/googletest/googletest/src/gtest-all.cc \
 OBJECTS       = gtest-all.o \
 		gmock-all.o \
 		main.o \
-		get_param.o \
 		enemy_class.o \
 		hero_class.o \
 		map_class.o \
 		get_command.o
-DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
+DIST          = ../../tests/maps/map.txt \
+		/usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
 		/usr/lib/qt/mkspecs/common/sanitize.conf \
@@ -295,7 +294,6 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../lab3/game.h ../../external/googletest/googletest/src/gtest-all.cc \
 		../../external/googletest/googlemock/src/gmock-all.cc \
 		../../tests/main.cpp \
-		../../lab3/get_param.cpp \
 		../../lab3/enemy_class.cpp \
 		../../lab3/hero_class.cpp \
 		../../lab3/map_class.cpp \
@@ -913,9 +911,6 @@ main.o: ../../tests/main.cpp ../../tests/tests.h \
 		../../external/googletest/googlemock/include/gmock/internal/custom/gmock-matchers.h \
 		../../lab3/game.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../tests/main.cpp
-
-get_param.o: ../../lab3/get_param.cpp ../../lab3/game.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_param.o ../../lab3/get_param.cpp
 
 enemy_class.o: ../../lab3/enemy_class.cpp ../../lab3/game.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o enemy_class.o ../../lab3/enemy_class.cpp

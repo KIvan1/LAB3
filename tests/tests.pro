@@ -20,11 +20,14 @@ HEADERS += tests.h \
         ../lab3/game.h
 
 SOURCES += main.cpp \
-        ../lab3/get_param.cpp \
         ../lab3/enemy_class.cpp \
         ../lab3/hero_class.cpp \
         ../lab3/map_class.cpp \
         ../lab3/get_command.cpp
 
 INCLUDEPATH += ../lab3
+
+DISTFILES += \
+        maps/map.txt
+
 LIBS += -lgcov -lncurses

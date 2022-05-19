@@ -7,7 +7,8 @@
 
 map::map()
 {
-
+    this->f_x = -1;
+    this->f_y = -1;
 }
 
 void map::drow_map()

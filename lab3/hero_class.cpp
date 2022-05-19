@@ -78,3 +78,8 @@ bool hero::collision(const enemy& e, const map& m)
     }
     return 0;
 }
+
+int hero::get_x(){return this->x;}
+int hero::get_y(){return this->y;}
+int hero::get_prev_x(){return this->prev_x;}
+int hero::get_prev_y(){return this->prev_y;}
