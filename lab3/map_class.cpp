@@ -47,6 +47,7 @@ bool map::load_map(std::string fname)
 		this->lab.push_back(cur_line);
 	}
 	this->h = this->lab.size();
+    f.close();
     return 0;
 }
 

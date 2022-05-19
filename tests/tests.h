@@ -12,6 +12,9 @@ TEST(load_map, suite1)
 {
     map m;
     m.load_map("maps/map.txt");
+    std::ifstream f("maps/map.txt");
+    std::string cur;
+    f.close();
 }
 
 TEST(hero_init, suite1)
