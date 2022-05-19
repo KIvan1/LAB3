@@ -37,7 +37,7 @@ struct map
     bool load_map(std::string fname);
     bool finish(int x, int y);
     bool clear();
-    void get_map(std::vector<std::string> lab);
+    void get_map(std::vector<std::string>& lab);
 private:
 	std::vector<char*> lab;
 	int h;

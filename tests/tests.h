@@ -5,15 +5,20 @@
 #include <string>
 #include <ncurses.h>
 #include <fstream>
-
 #include "game.h"
 
 TEST(load_map, suite1)
 {
     map m;
     m.load_map("maps/map.txt");
+    std::vector<std::string> lab;
+    m.get_map(lab);
     std::ifstream f("maps/map.txt");
-    std::string cur;
+    std::string cur_line;
+    while(getline(f, cur_line))
+    {
+
+    }
     f.close();
 }
 
