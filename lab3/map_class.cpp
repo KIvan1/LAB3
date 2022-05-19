@@ -88,6 +88,7 @@ bool map::clear()
     {
         free(lab[i]);
     }
+    return 0;
 }
 
 void map::get_map(std::vector<std::string>& lab)
