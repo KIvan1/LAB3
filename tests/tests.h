@@ -22,6 +22,17 @@ TEST(load_map, suite1)
         i++;
     }
     f.close();
+    m.clear();
+}
+
+TEST(load_map, suite2)
+{
+    map m;
+    testing::internal::CaptureStderr();
+    m.load_map("nofile.txt");
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "File not found!\n");
+    m.clear();
 }
 
 TEST(hero_init, suite1)
@@ -32,6 +43,7 @@ TEST(hero_init, suite1)
     h.init(2, 1, m);
     int k = h.get_x();
     ASSERT_EQ(k, 2);
+    m.clear();
 }
 
 TEST(hero_init, suite2)
@@ -43,6 +55,7 @@ TEST(hero_init, suite2)
     h.init(0, 0, m);
     std::string s = testing::internal::GetCapturedStderr();
     ASSERT_EQ(s, "hero obj can't be init\n");
+    m.clear();
 }
 
 TEST(hero_init, suite3)
@@ -54,6 +67,7 @@ TEST(hero_init, suite3)
     h.init(-1, -3, m);
     std::string s = testing::internal::GetCapturedStderr();
     ASSERT_EQ(s, "hero obj can't be init\n");
+    m.clear();
 }
 
 TEST(hero_init, suite4)
@@ -65,6 +79,7 @@ TEST(hero_init, suite4)
     h.init(40, 40, m);
     std::string s = testing::internal::GetCapturedStderr();
     ASSERT_EQ(s, "hero obj can't be init\n");
+    m.clear();
 }
 
 #endif // EQTEST_H
