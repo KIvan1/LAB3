@@ -1,7 +1,7 @@
 *.user
 build
 Makefile
-app/app
+lab3/lab3
 *.o
 *.gcda
 *.gcno
