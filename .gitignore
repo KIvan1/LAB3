@@ -1,1 +1,8 @@
-build-qmake-LAB3-Desktop-Debug
+*.user
+build
+Makefile
+app/app
+*.o
+*.gcda
+*.gcno
+tests/tests
