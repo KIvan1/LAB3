@@ -35,6 +35,13 @@ TEST(load_map, suite2)
     m.clear();
 }
 
+TEST(init_finish, suite1)
+{
+    map m;
+
+    m.clear();
+}
+
 TEST(hero_init, suite1)
 {
     map m;
@@ -150,11 +157,89 @@ TEST(hero_move, suite4)
     map m;
     m.load_map("maps/map.txt");
     hero h;
+    h.init(6, 1, m);
+    h.move_x(-1, m);
+    int k = h.get_x();
+    ASSERT_EQ(k, 4);
+    m.clear();
+}
+
+
+TEST(hero_move, suite5)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
     h.init(6, 2, m);
     h.move_y(1, m);
     int k = h.get_y();
     ASSERT_EQ(k, 3);
     m.clear();
 }
+
+TEST(hero_move, suite6)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
+    h.init(6, 2, m);
+    h.move_y(-1, m);
+    int k = h.get_y();
+    ASSERT_EQ(k, 1);
+    m.clear();
+}
+
+TEST(hero_move, suite7)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
+    h.init(6, 2, m);
+    h.move_x(-1, m);
+    int k = h.get_x();
+    ASSERT_EQ(k, 6);
+    m.clear();
+}
+
+TEST(hero_move, suite8)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
+    h.init(6, 2, m);
+    h.move_x(1, m);
+    int k = h.get_x();
+    ASSERT_EQ(k, 6);
+    m.clear();
+}
+
+TEST(hero_move, suite9)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
+    h.init(2, 1, m);
+    h.move_y(1, m);
+    int k = h.get_y();
+    ASSERT_EQ(k, 1);
+    m.clear();
+}
+
+TEST(hero_move, suite10)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    hero h;
+    h.init(2, 1, m);
+    h.move_y(-1, m);
+    int k = h.get_y();
+    ASSERT_EQ(k, 1);
+    m.clear();
+}
+
+//TEST(enemy_init, suite1)
+//{
+
+//}
 
 #endif // EQTEST_H
