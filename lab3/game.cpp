@@ -26,14 +26,14 @@ int main()
     }
 	vector<enemy> e;
     enemy cur_e;
-    if(cur_e.init(4, 3, m))
+    if(cur_e.init(4, 3, 10, m))
     {
         m.clear();
         return 0;
     }
     e.push_back(cur_e);
     enemy cur_e1;
-    if(cur_e1.init(20, 5, m))
+    if(cur_e1.init(20, 5, 7, m))
     {
         m.clear();
         return 0;

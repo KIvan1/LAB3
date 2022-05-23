@@ -8,23 +8,29 @@ enemy::enemy()
 
 }
 
-bool enemy::init(int x, int y, const map& m)
+bool enemy::init(int x, int y, int way_len, const map& m)
 {
     if (x <= 0 || y <= 0)
     {
-        fprintf(stderr, "hero obj can't be init\n");
+        fprintf(stderr, "enemy obj can't be init\n");
         return 1;
     }
 
     if (x % 2 != 0)
     {
-        fprintf(stderr, "hero obj can't be init\n");
+        fprintf(stderr, "enemy obj can't be init\n");
         return 1;
     }
 
     if (x >= m.w || y >= m.h)
     {
-        fprintf(stderr, "hero obj can't be init\n");
+        fprintf(stderr, "enemy obj can't be init\n");
+        return 1;
+    }
+
+    if (way_len <= 0)
+    {
+        fprintf(stderr, "enemy obj can't be init\n");
         return 1;
     }
 
@@ -34,7 +40,7 @@ bool enemy::init(int x, int y, const map& m)
 		this->y = y;
 		this->prev_x = x;
 		this->prev_y = y;
-        this->way_len = 10;
+        this->way_len = way_len;
 		for (int i = 0; i < this->way_len; i ++)
 		{
 			this->way.push_back(0);
@@ -157,4 +163,9 @@ void enemy::drow_enemy(const hero& h)
     mvinsch(this->y, this->x, '@');
 }
 
-
+int enemy::get_x(){return this->x;}
+int enemy::get_y(){return this->y;}
+int enemy::get_prev_x(){return this->prev_x;}
+int enemy::get_prev_y(){return this->prev_y;}
+int enemy::get_way_len(){return this->way_len;}
+void enemy::get_way(std::vector<int>& way){way = this->way;}

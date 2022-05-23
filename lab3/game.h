@@ -53,9 +53,15 @@ struct enemy
     friend struct hero;
 
 	enemy();
-    bool init(int x, int y, const map& m);
+    bool init(int x, int y, int way_len, const map& m);
     void move_enemy(const map& m);
     void drow_enemy(const hero& h);
+    int get_x();
+    int get_y();
+    int get_prev_x();
+    int get_prev_y();
+    int get_way_len();
+    void get_way(std::vector<int>& way);
 private:
 	int x;
 	int y;

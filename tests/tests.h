@@ -73,7 +73,7 @@ TEST(init_finish, suite4)
     map m;
     m.load_map("maps/map.txt");
     testing::internal::CaptureStderr();
-    m.finish(2, 0);
+    m.finish(2, 2);
     std::string s = testing::internal::GetCapturedStderr();
     ASSERT_EQ(s, "finish can't be create\n");
     m.clear();
@@ -132,7 +132,7 @@ TEST(hero_init, suite4)
     m.load_map("maps/map.txt");
     hero h;
     testing::internal::CaptureStderr();
-    h.init(40, 40, m);
+    h.init(50, 40, m);
     std::string s = testing::internal::GetCapturedStderr();
     ASSERT_EQ(s, "hero obj can't be init\n");
     m.clear();
@@ -281,6 +281,103 @@ TEST(hero_move, suite10)
     h.move_y(-1, m);
     int k = h.get_y();
     ASSERT_EQ(k, 1);
+    m.clear();
+}
+
+TEST(enemy_init, suite1)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    e.init(2, 1, 10, m);
+    int k = e.get_x();
+    ASSERT_EQ(k, 2);
+    k = e.get_y();
+    ASSERT_EQ(k, 1);
+    k = e.get_prev_x();
+    ASSERT_EQ(k, 2);
+    k = e.get_prev_y();
+    ASSERT_EQ(k, 1);
+    k = e.get_way_len();
+    ASSERT_EQ(k, 10);
+    std::vector<int> way;
+    e.get_way(way);
+    for (int i = 0; i < 10; i++)
+    {
+        ASSERT_EQ(way[i], 0);
+    }
+    m.clear();
+}
+
+TEST(enemy_init, suite2)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(-1, -1, 10, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
+    m.clear();
+}
+
+TEST(enemy_init, suite3)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(50, 50, 10, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
+    m.clear();
+}
+
+TEST(enemy_init, suite4)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(1, 1, 10, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
+    m.clear();
+}
+
+TEST(enemy_init, suite5)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(2, 1, 0, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
+    m.clear();
+}
+
+TEST(enemy_init, suite6)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(2, 1, -3, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
+    m.clear();
+}
+
+TEST(enemy_init, suite7)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    testing::internal::CaptureStderr();
+    e.init(2, 2, 10, m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "enemy obj can't be init\n");
     m.clear();
 }
 
