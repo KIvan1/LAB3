@@ -86,6 +86,11 @@ bool hero::collision(const enemy& e, const map& m)
     {
         return 1;
     }
+    if (e.prev_x == this->x && e.prev_y == this->y && e.x == this->prev_x && e.y == this->prev_y)
+    {
+        return 1;
+    }
+
     return 0;
 }
 

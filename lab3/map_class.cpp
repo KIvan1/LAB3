@@ -98,3 +98,7 @@ void map::get_map(std::vector<std::string>& lab)
         lab.push_back(this->lab[i]);
     }
 }
+
+int map::get_f_x(){return this->f_x;}
+
+int map::get_f_y(){return this->f_y;}

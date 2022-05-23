@@ -38,6 +38,8 @@ struct map
     bool finish(int x, int y);
     bool clear();
     void get_map(std::vector<std::string>& lab);
+    int get_f_x();
+    int get_f_y();
 private:
 	std::vector<char*> lab;
 	int h;

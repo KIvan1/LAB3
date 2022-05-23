@@ -38,7 +38,54 @@ TEST(load_map, suite2)
 TEST(init_finish, suite1)
 {
     map m;
+    m.load_map("maps/map.txt");
+    testing::internal::CaptureStderr();
+    m.finish(-1, -1);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "finish can't be create\n");
+    m.clear();
+}
 
+TEST(init_finish, suite2)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    testing::internal::CaptureStderr();
+    m.finish(40, 50);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "finish can't be create\n");
+    m.clear();
+}
+
+TEST(init_finish, suite3)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    testing::internal::CaptureStderr();
+    m.finish(39, 19);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "finish can't be create\n");
+    m.clear();
+}
+
+TEST(init_finish, suite4)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    testing::internal::CaptureStderr();
+    m.finish(2, 0);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "finish can't be create\n");
+    m.clear();
+}
+
+TEST(init_finish, suite5)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    m.finish(38, 19);
+    ASSERT_EQ(m.get_f_x(), 38);
+    ASSERT_EQ(m.get_f_y(), 19);
     m.clear();
 }
 
