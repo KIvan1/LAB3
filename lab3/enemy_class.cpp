@@ -157,7 +157,6 @@ bool enemy::move_enemy(const map& m)
 		}
 	}
     return 0;
-
 }
 
 void enemy::drow_enemy(const hero& h)
@@ -177,3 +176,5 @@ int enemy::get_prev_x(){return this->prev_x;}
 int enemy::get_prev_y(){return this->prev_y;}
 int enemy::get_way_len(){return this->way_len;}
 void enemy::get_way(std::vector<int>& way){way = this->way;}
+int enemy::get_side(){return this->side;}
+int enemy::get_it(){return this->it;}

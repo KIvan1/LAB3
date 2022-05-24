@@ -300,6 +300,8 @@ TEST(enemy_init, suite1)
     ASSERT_EQ(k, 1);
     k = e.get_way_len();
     ASSERT_EQ(k, 10);
+    k = e.get_side();
+    ASSERT_EQ(k, 1);
     std::vector<int> way;
     e.get_way(way);
     for (int i = 0; i < 10; i++)
@@ -394,6 +396,74 @@ TEST(move_enemy, suite1)
     m.clear();
 }
 
+TEST(move_enemy, suite2)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    e.init(2, 1, 10, m);
+    for (int i = 0; i < 10; i++)
+    {
+        e.move_enemy(m);
+    }
+    std::vector<int> way;
+    e.get_way(way);
+    for (int i = 0; i < 10; i++)
+    {
+        ASSERT_NE(way[i], 0);
+    }
+    int k;
+    k = e.get_side();
+    ASSERT_EQ(k, -1);
+
+    m.clear();
+}
+
+TEST(move_enemy, suite3)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    e.init(2, 1, 10, m);
+    for (int i = 0; i < 10; i++)
+    {
+        e.move_enemy(m);
+    }
+
+    std::vector<int> way;
+    e.get_way(way);
+
+    for (int i = 0; i < 10; i++)
+    {
+        e.move_enemy(m);
+    }
+
+    std::vector<int> back_way;
+    e.get_way(back_way);
+    for (int i = 0; i < 10; i++)
+    {
+        switch (way[i])
+        {
+            case 1:
+                ASSERT_EQ(back_way[i], 3);
+                break;
+            case 2:
+                ASSERT_EQ(back_way[i], 4);
+                break;
+            case 3:
+                ASSERT_EQ(back_way[i], 1);
+                break;
+            case 4:
+                ASSERT_EQ(back_way[i], 2);
+                break;
+        }
+    }
+    int k;
+    k = e.get_side();
+    ASSERT_EQ(k, 1);
+
+    m.clear();
+}
 
 //TEST(enemy_init, suite1)
 //{

@@ -62,6 +62,8 @@ struct enemy
     int get_prev_y();
     int get_way_len();
     void get_way(std::vector<int>& way);
+    int get_side();
+    int get_it();
 private:
 	int x;
 	int y;
