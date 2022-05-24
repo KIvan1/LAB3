@@ -59,7 +59,8 @@ int main()
         h.drow_hero();
 		for (int i = 0; i < e.size(); i ++)
 		{
-            e[i].move_enemy(m);
+            if(e[i].move_enemy(m))
+                return 0;
             if (h.collision(e[i], m))
             {
                 k = false;

@@ -28,6 +28,7 @@ SOURCES += main.cpp \
 INCLUDEPATH += ../lab3
 
 DISTFILES += \
-        maps/map.txt
+        maps/map.txt \
+        maps/map1.txt
 
 LIBS += -lgcov -lncurses

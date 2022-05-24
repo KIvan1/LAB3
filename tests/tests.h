@@ -381,6 +381,20 @@ TEST(enemy_init, suite7)
     m.clear();
 }
 
+TEST(move_enemy, suite1)
+{
+    map m;
+    m.load_map("maps/map1.txt");
+    enemy e;
+    e.init(2, 1, 10, m);
+    testing::internal::CaptureStderr();
+    e.move_enemy(m);
+    std::string s = testing::internal::GetCapturedStderr();
+    ASSERT_EQ(s, "Enemy can't be moved");
+    m.clear();
+}
+
+
 //TEST(enemy_init, suite1)
 //{
 

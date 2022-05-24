@@ -57,11 +57,18 @@ bool enemy::init(int x, int y, int way_len, const map& m)
 	
 }
 
-void enemy::move_enemy(const map& m)
+bool enemy::move_enemy(const map& m)
 {
 	std::srand(std::time(NULL));
 	this->prev_y = this->y;
 	this->prev_x = this->x;
+
+    if (m.lab[this->y - 1][this->x] == '#' && m.lab[this->y + 1][this->x] == '#' &&
+            m.lab[this->y][this->x - 2] == '#' && m.lab[this->y][this->x + 2] == '#')
+    {
+        fprintf(stderr, "Enemy can't be moved");
+        return 1;
+    }
 
 	if (this->way[this->it] != 0)
 	{
@@ -149,6 +156,7 @@ void enemy::move_enemy(const map& m)
 			}
 		}
 	}
+    return 0;
 
 }
 

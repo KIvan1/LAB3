@@ -54,7 +54,7 @@ struct enemy
 
 	enemy();
     bool init(int x, int y, int way_len, const map& m);
-    void move_enemy(const map& m);
+    bool move_enemy(const map& m);
     void drow_enemy(const hero& h);
     int get_x();
     int get_y();
