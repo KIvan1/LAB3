@@ -7,7 +7,7 @@ SOURCES += game.cpp \
         enemy_class.cpp\
         get_command.cpp \
         hero_class.cpp \
-        set_param.cpp \
+        ../tests/set_param.cpp \
         map_class.cpp
 
 
@@ -16,6 +16,8 @@ HEADERS += \
 
 DISTFILES += \
         maps/map.txt
+
+INCLUDEPATH += ../tests
 
 
 QMAKE_CFLAGS += -Wall -Wextra
