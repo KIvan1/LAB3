@@ -467,7 +467,57 @@ TEST(collision, suite1)
     ASSERT_EQ(k, 1);
 }
 
-//TEST(enemy_init, suite1)
+TEST(collision, suite2)
+{
+    map m;
+    m.load_map("maps/map2.txt");
+    m.finish(10, 10);
+    enemy e;
+    e.init(10, 8, 4, m);
+    hero h;
+    h.init(10, 10, m);
+    bool k;
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
+}
+
+TEST(collision, suite3)
+{
+    map m;
+    m.load_map("maps/map2.txt");
+    enemy e;
+    e.init(10, 10, 4, m);
+    set_way(e);
+    e.move_enemy(m);
+    hero h;
+    h.init(10, 9, m);
+    h.move_y(1, m);
+    bool k;
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
+
+    e.move_enemy(m);
+    h.init(8, 9, m);
+    h.move_x(1, m);
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
+
+    e.move_enemy(m);
+    h.init(8, 10, m);
+    h.move_y(-1, m);
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
+
+    e.move_enemy(m);
+    h.init(10, 10, m);
+    h.move_x(-1, m);
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
+
+    m.clear();
+}
+
+//TEST(drow, suite1)
 //{
 
 //}
