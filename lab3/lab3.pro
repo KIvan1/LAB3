@@ -7,6 +7,7 @@ SOURCES += game.cpp \
         enemy_class.cpp\
         get_command.cpp \
         hero_class.cpp \
+        set_param.cpp \
         map_class.cpp
 
 

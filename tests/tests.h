@@ -422,89 +422,49 @@ TEST(move_enemy, suite2)
 TEST(move_enemy, suite3)
 {
     map m;
-    m.load_map("maps/map.txt");
+    m.load_map("maps/map2.txt");
     enemy e;
-    e.init(2, 1, 10, m);
-    for (int i = 0; i < 10; i++)
-    {
-        e.move_enemy(m);
-    }
+    e.init(10, 10, 4, m);
+    set_way(e);
 
-    std::vector<int> way;
-    e.get_way(way);
+    int k = e.get_y();
+    e.move_enemy(m);
+    ASSERT_EQ(k, e.get_prev_y());
+    ASSERT_EQ(e.get_prev_x(), e.get_x());
+    ASSERT_EQ(k - 1, e.get_y());
 
-    for (int i = 0; i < 10; i++)
-    {
-        e.move_enemy(m);
-    }
+    k = e.get_x();
+    e.move_enemy(m);
+    ASSERT_EQ(k, e.get_prev_x());
+    ASSERT_EQ(e.get_prev_y(), e.get_y());
+    ASSERT_EQ(k - 2, e.get_x());
 
-    std::vector<int> back_way;
-    e.get_way(back_way);
-    for (int i = 0; i < 10; i++)
-    {
-        switch (way[i])
-        {
-            case 1:
-                ASSERT_EQ(back_way[i], 3);
-                break;
-            case 2:
-                ASSERT_EQ(back_way[i], 4);
-                break;
-            case 3:
-                ASSERT_EQ(back_way[i], 1);
-                break;
-            case 4:
-                ASSERT_EQ(back_way[i], 2);
-                break;
-        }
-    }
-    int k;
-    k = e.get_side();
-    ASSERT_EQ(k, 1);
+    k = e.get_y();
+    e.move_enemy(m);
+    ASSERT_EQ(k, e.get_prev_y());
+    ASSERT_EQ(e.get_prev_x(), e.get_x());
+    ASSERT_EQ(k + 1, e.get_y());
+
+    k = e.get_x();
+    e.move_enemy(m);
+    ASSERT_EQ(k, e.get_prev_x());
+    ASSERT_EQ(e.get_prev_y(), e.get_y());
+    ASSERT_EQ(k + 2, e.get_x());
 
     m.clear();
 }
 
-TEST(move_enemy, suite4)
+TEST(collision, suite1)
 {
     map m;
     m.load_map("maps/map2.txt");
     enemy e;
-    e.init(10, 10, 3, m);
-    for (int i = 0; i < 3; i++)
-    {
-        e.move_enemy(m);
-    }
-    int i = 2;
-    int x = e.get_x();
-    int y = e.get_y();
-    std::vector<int> way;
-    e.get_way(way);
-    e.move_enemy(m);
-    switch (way[i])
-    {
-        case 1:
-            ASSERT_EQ(e.get_prev_y(), y);
-            ASSERT_EQ(e.get_prev_x(), e.get_x());
-            ASSERT_EQ(e.get_y(), y - 1);
-            break;
-        case 2:
-            ASSERT_EQ(e.get_prev_x(), x);
-            ASSERT_EQ(e.get_prev_y(), e.get_y());
-            ASSERT_EQ(e.get_x(), x - 2);
-            break;
-        case 3:
-            ASSERT_EQ(e.get_prev_y(), y);
-            ASSERT_EQ(e.get_prev_x(), e.get_x());
-            ASSERT_EQ(e.get_y(), y + 1);
-            break;
-        case 4:
-            ASSERT_EQ(e.get_prev_x(), x);
-            ASSERT_EQ(e.get_prev_y(), e.get_y());
-            ASSERT_EQ(e.get_x(), x + 2);
-            break;
-    }
-    m.clear();
+    e.init(10, 10, 4, m);
+    hero h;
+    h.init(10, 10, m);
+    bool k;
+    k = h.collision(e, m);
+    ASSERT_EQ(k, 1);
 }
 
 //TEST(enemy_init, suite1)

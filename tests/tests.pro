@@ -23,7 +23,8 @@ SOURCES += main.cpp \
         ../lab3/enemy_class.cpp \
         ../lab3/hero_class.cpp \
         ../lab3/map_class.cpp \
-        ../lab3/get_command.cpp
+        ../lab3/get_command.cpp \
+        ../lab3/set_param.cpp
 
 INCLUDEPATH += ../lab3
 

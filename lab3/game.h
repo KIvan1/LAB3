@@ -5,6 +5,7 @@
 struct map;
 struct enemy;
 struct hero;
+void set_way(enemy& e);
 
 struct hero
 {
@@ -51,6 +52,7 @@ private:
 struct enemy
 {
     friend struct hero;
+    friend void set_way(enemy& e);
 
 	enemy();
     bool init(int x, int y, int way_len, const map& m);
