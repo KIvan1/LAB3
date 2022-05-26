@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.1, 2022-05-24T09:38:46. -->
+<!-- Written by QtCreator 7.0.1, 2022-05-25T12:40:34. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -68,6 +68,7 @@
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="1@/home/ivan/POtesting/LAB3/tests/tests.h:collision">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ivan/POtesting/LAB3/tests/tests.h:enemy_init">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ivan/POtesting/LAB3/tests/tests.h:hero_init">Checked</value>
     <value type="Qt::CheckState" key="1@/home/ivan/POtesting/LAB3/tests/tests.h:hero_move">Checked</value>

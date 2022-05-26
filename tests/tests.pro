@@ -31,6 +31,7 @@ INCLUDEPATH += ../lab3
 DISTFILES += \
         maps/map.txt \
         maps/map1.txt \
-        maps/map2.txt
+        maps/map2.txt \
+        maps/map4.txt
 
 LIBS += -lgcov -lncurses

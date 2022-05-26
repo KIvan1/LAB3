@@ -399,16 +399,16 @@ TEST(move_enemy, suite1)
 TEST(move_enemy, suite2)
 {
     map m;
-    m.load_map("maps/map.txt");
+    m.load_map("maps/map2.txt");
     enemy e;
-    e.init(2, 1, 10, m);
-    for (int i = 0; i < 10; i++)
+    e.init(10, 10, 50, m);
+    for (int i = 0; i < 50; i++)
     {
         e.move_enemy(m);
     }
     std::vector<int> way;
     e.get_way(way);
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 50; i++)
     {
         ASSERT_NE(way[i], 0);
     }
@@ -517,9 +517,51 @@ TEST(collision, suite3)
     m.clear();
 }
 
-//TEST(drow, suite1)
-//{
-
-//}
+TEST(drow, suite1)
+{
+    map m;
+    m.load_map("maps/map.txt");
+    enemy e;
+    e.init(2, 1, 4, m);
+    hero h;
+    h.init(8, 1, m);
+    initscr();
+    testing::internal::CaptureStdout();
+    m.drow_map();
+    h.drow_hero();
+    e.drow_enemy(h);
+    refresh();
+    std::string s = testing::internal::GetCapturedStdout();
+    endwin();
+    std::ifstream f("maps/map4.txt");
+    std::string line;
+    int i = 0;
+    while(std::getline(f, line))
+    {
+        int k = 0;
+        while(s[i] != '#' && s[i] == ' ' && s[i] == '@' && s[i] == 'o')
+        {
+            i++;
+        }
+        while(s[i] == '#' || s[i] == ' ' || s[i] == '@' || s[i] == 'o')
+        {
+            ASSERT_EQ(s[i], line[k]);
+            i++;
+            k++;
+        }
+        i++;
+    }
+    m.clear();
+}
 
 #endif // EQTEST_H
+
+
+
+
+
+
+
+
+
+
