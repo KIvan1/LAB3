@@ -159,7 +159,7 @@ bool enemy::move_enemy(const map& m)
     return 0;
 }
 
-void enemy::drow_enemy(const hero& h)
+void enemy::draw_enemy(const hero& h)
 {
     if (this->prev_x != h.x || this->prev_y != h.y)
     {

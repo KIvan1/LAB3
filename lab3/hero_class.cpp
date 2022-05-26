@@ -68,7 +68,7 @@ void hero::move_y(int side, const map& m)
 		this->y += side;
 }
 
-void hero::drow_hero()
+void hero::draw_hero()
 {
 	mvdelch(this->prev_y, this->prev_x);
 	mvinsch(this->prev_y, this->prev_x, ' ');

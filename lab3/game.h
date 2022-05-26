@@ -6,7 +6,7 @@ struct map;
 struct enemy;
 struct hero;
 void set_way(enemy& e);
-void drow();
+void draw();
 
 struct hero
 {
@@ -16,7 +16,7 @@ struct hero
     bool init(int x, int y, const map& m);
     void move_x(int side, const map& m);
     void move_y(int side, const map& m);
-	void drow_hero();
+    void draw_hero();
     bool collision(const enemy& e, const map& m);
     int get_x();
     int get_y();
@@ -35,7 +35,7 @@ struct map
 	friend struct enemy;
 
 	map();
-	void drow_map();
+    void draw_map();
     bool load_map(std::string fname);
     bool finish(int x, int y);
     bool clear();
@@ -58,7 +58,7 @@ struct enemy
 	enemy();
     bool init(int x, int y, int way_len, const map& m);
     bool move_enemy(const map& m);
-    void drow_enemy(const hero& h);
+    void draw_enemy(const hero& h);
     int get_x();
     int get_y();
     int get_prev_x();

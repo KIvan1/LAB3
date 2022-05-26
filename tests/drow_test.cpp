@@ -1,7 +1,7 @@
 #include"game.h"
 #include<ncurses.h>
 
-void drow()
+void draw()
 {
     map m;
     m.load_map("maps/map.txt");
@@ -10,9 +10,9 @@ void drow()
     hero h;
     h.init(8, 1, m);
     initscr();
-    m.drow_map();
-    h.drow_hero();
-    e.drow_enemy(h);
+    m.draw_map();
+    h.draw_hero();
+    e.draw_enemy(h);
     refresh();
     endwin();
 }

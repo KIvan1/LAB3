@@ -11,7 +11,7 @@ map::map()
     this->f_y = -1;
 }
 
-void map::drow_map()
+void map::draw_map()
 {
 	for (int i = 0; i < this->lab.size(); i++)
 	{

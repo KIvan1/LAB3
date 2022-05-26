@@ -46,17 +46,17 @@ int main()
         exit(1);
     }
 
-	m.drow_map();
+    m.draw_map();
 	for (int i = 0; i < e.size(); i ++)
 	{
-        e[i].drow_enemy(h);
+        e[i].draw_enemy(h);
 	}
-	h.drow_hero();
+    h.draw_hero();
 	refresh();
 	while (k)
 	{
         k = get_comm(h, m);
-        h.drow_hero();
+        h.draw_hero();
 		for (int i = 0; i < e.size(); i ++)
 		{
             if(e[i].move_enemy(m))
@@ -66,7 +66,7 @@ int main()
                 k = false;
                 break;
             }
-            e[i].drow_enemy(h);
+            e[i].draw_enemy(h);
         }
 		refresh();
 	}
