@@ -8,6 +8,7 @@ SOURCES += game.cpp \
         get_command.cpp \
         hero_class.cpp \
         ../tests/set_param.cpp \
+        ../tests/drow_test.cpp \
         map_class.cpp
 
 

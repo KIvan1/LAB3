@@ -6,6 +6,7 @@ struct map;
 struct enemy;
 struct hero;
 void set_way(enemy& e);
+void drow();
 
 struct hero
 {

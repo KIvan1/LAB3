@@ -24,7 +24,8 @@ SOURCES += main.cpp \
         ../lab3/hero_class.cpp \
         ../lab3/map_class.cpp \
         ../lab3/get_command.cpp \
-        set_param.cpp
+        set_param.cpp \
+        drow_test.cpp
 
 INCLUDEPATH += ../lab3
 
